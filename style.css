@@ -1,0 +1,309 @@
+/* Colours */
+:root {
+    --background: #171426;
+    --surface: #242039;
+    --text: #F7F3FF;
+    --muted: #BDB5D0;
+    --coral: #ecf022;
+    --mint: #8EF0C0;
+    --purple: #d1c1ff;
+}
+
+/* 2. Predictable sizing */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 10% 5%, #39234D 0, transparent 38%),
+        var(--background);
+    color: var(--text);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+}
+
+/* 3. Shared layout */
+header,
+main,
+footer {
+    width: min(1100px, 90%);
+    margin-inline: auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+}
+
+header > a {
+    color: var(--mint);
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+nav a:hover {
+    color: var(--coral);
+}
+
+/* 4. Main sections */
+section {
+    padding: 76px 0;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    max-width: 850px;
+    margin-bottom: 12px;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 0.65;
+    letter-spacing: -0.06em;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 1.35rem;
+}
+
+p {
+    color: var(--muted);
+}
+
+#home {
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+#home > p:first-child {
+    color: var(--mint);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#home h1 {
+    color: var(--coral);
+}
+
+#home h2 {
+    max-width: 700px;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+#home > p:not(:first-child) {
+    max-width: 620px;
+}
+
+/* 5. Buttons and links */
+main a {
+    display: inline-block;
+    margin: 8px 12px 8px 0;
+    color: var(--mint);
+    text-underline-offset: 5px;
+}
+
+#home a,
+#contact a {
+    padding: 12px 18px;
+    border: 1px solid var(--mint);
+    border-radius: 12px;
+    text-decoration: none;
+    transition:
+        transform 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease;
+}
+
+#home a:first-of-type {
+    background: var(--mint);
+    color: var(--background);
+    font-weight: 700;
+}
+
+#home a:hover,
+#contact a:hover {
+    transform: translateY(-3px);
+    background: var(--coral);
+    border-color: var(--coral);
+    color: var(--background);
+}
+
+/* 6. Project cards */
+#projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+#projects > h2 {
+    grid-column: 1 / -1;
+}
+
+#projects article {
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid #453B61;
+    border-radius: 20px;
+    transition:
+        transform 200ms ease,
+        border-color 200ms ease;
+}
+
+#projects article:hover {
+    transform: translateY(-20px);
+    border-color: var(--purple);
+    background: #9951f7;
+}
+
+#projects article h3 {
+    color: var(--purple);
+}
+
+#projects article p:last-child {
+    margin-bottom: 0;
+}
+
+/* 7. Skills list, if you added the Skills section */
+#skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+#skills li {
+    padding: 8px 16px;
+    border: 1px solid #66558A;
+    border-radius: 999px;
+    color: var(--mint);
+}
+
+/* 8. Footer */
+footer {
+    padding: 28px 0;
+    border-top: 1px solid #453B61;
+}
+
+/* 9. Mobile layout */
+@media (max-width: 650px) {
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    section {
+        padding: 48px 0;
+    }
+
+    #home {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    #projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 10. Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Light theme */
+body.light-theme {
+    --background: #FFF8F0;
+    --surface: #FFFFFF;
+    --text: #29213D;
+    --muted: #655B73;
+    --coral: #D94F36;
+    --mint: #176B50;
+    --purple: #7550C8;
+    background: var(--background);
+    color: var(--text);
+}
+
+body.light-theme #projects article {
+    border-color: #E5D9F5;
+}
+
+body.light-theme footer {
+    border-color: #E5D9F5;
+}
+
+/* Style the theme button */
+#theme-toggle {
+    padding: 9px 13px;
+    border: 1px solid var(--purple);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 600ms ease,
+        transform 600ms ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none;
+        transform: none;
+    }
+}
